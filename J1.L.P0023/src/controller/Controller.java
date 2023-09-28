@@ -8,7 +8,6 @@ import VIew.Menu;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Scanner;
 import model.Fruit;
 
 /**
@@ -41,9 +40,9 @@ public class Controller extends Menu {
     public void createFruit(){
         int id = vl.inputInt("create fruit id",0,100);
         String name = vl.inputString("create fruitname:");
-        double price = vl.inputDouble("create fruit price"+name,0,1000);
-        int quantity = vl.inputInt("create quantity "+name,1, 1000);
-        String origin = vl.inputString("create origin "+name);
+        double price = vl.inputDouble("create fruit price: "+name,0,1000);
+        int quantity = vl.inputInt("create quantity: "+name,1, 1000);
+        String origin = vl.inputString("create origin: "+name);
         Fruit f = new Fruit(id,name,price,quantity,origin);
         list.add(f);
     }
@@ -51,9 +50,9 @@ public class Controller extends Menu {
         ArrayList<Fruit> listItemBought = new ArrayList<>();
         int index = 1;
         System.out.println("List of Fruit");
-        System.out.println("|++ITEM++|++FruitName++|++Origin++|++Price++|");
+        System.out.printf("|%-10s|%-15s|%-10s|%10s|%n", "ITEM", "FRUIT NAME","ORIGIN","PRICE");
         for(Fruit f : list){
-            System.out.println(index+"          "+f.getFruitName()+"       "+f.getOrigin()+"  "+f.getPrice());
+            System.out.printf("%-10s%-15s%-10s%-10s%n",index, f.getFruitId(), f.getFruitName(), f.getOrigin(), f.getPrice());
             index++;
         }
         int choise = vl.inputInt("Enter your choise",1,list.size());
@@ -64,28 +63,26 @@ public class Controller extends Menu {
         listItemBought.add(selectedFruit);
         boolean repeat = true;
         while (repeat) { 
-      String c = vl.inputString("Do you want to order now (Y/N)"); 
-      switch (c) {
-        case "Y":
-          System.out.println("Product|Quantity|Price|Amount");
-          double total = 0;
-          for (Fruit f : listItemBought) {
-            System.out.println(
-              f.getFruitName() +"    " +f.getQuantity() +"    " +f.getPrice() +"    " +(f.getPrice() * f.getQuantity())
-            );
-            total += quantity * f.getPrice();
-          }
-          System.out.println("Total: " + total);
-          String customerName = vl.inputString("enter your name:");
-          hashtable.put(customerName, listItemBought);
-          repeat = false;
-          break;
+        String c = vl.inputString("Do you want to order now (Y/N)"); 
+        switch (c) {
+            case "Y":
+                System.out.printf("%-18s|%-10s|%-10s|%10s%n","Product","Quantity","Price","Amount"); 
+                double total = 0;
+                for (Fruit f : listItemBought) {
+                    System.out.printf("%-18s%-10s%-10s%-10s%n", f.getFruitName(),f.getQuantity(), f.getPrice(), (f.getQuantity()* f.getPrice()));
+                    total += quantity * f.getPrice();
+                }
+                System.out.println("Total: " + total);
+                String customerName = vl.inputString("enter your name:");
+                hashtable.put(customerName, listItemBought);
+                repeat = false;
+                break;
         case "N":
-          repeat = false;
-          break;
+            repeat = false;
+            break;
         default:
-          System.out.println("please enter again"); 
-          repeat = true;
+            System.out.println("please enter again"); 
+            repeat = true;
       }
     }
     }
@@ -97,8 +94,8 @@ public class Controller extends Menu {
             System.out.println("Product | Quantity | Price | Amount ");
             double total = 0;
             for(Fruit f : hashtable.get(nameCustomer)){
-           System.out.println(f.getFruitName()+"   "+f.getQuantity()+"    "+f.getPrice()+"     "+(f.getQuantity()*f.getPrice()));
-           total +=f.getQuantity()*f.getPrice();
+            System.out.printf("%-15s%-10d%-10.2f%10.2f%n", f.getFruitName(), f.getQuantity(), f.getPrice(), (f.getQuantity()*f.getPrice()));
+            total +=f.getQuantity()*f.getPrice();
         }
             System.out.println("Total: "+ total);
         }
