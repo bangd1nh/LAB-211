@@ -83,8 +83,8 @@ public class Controller extends Menu {
         default:
             System.out.println("please enter again"); 
             repeat = true;
-      }
-    }
+        }
+        }   
     }
     public void viewOrder(){
         Enumeration<String> nameCustomerList = hashtable.keys();
