@@ -72,7 +72,7 @@ public class Validate {
 
     //check file data exist or not
     public static boolean checkFileExist() {
-        File file = new File("D:/LAB211/J1.S.P0057D/user.dat");
+        File file = new File("D:/LAB211/J1.S.P0057/user.dat");
         if (!file.exists()) {
             try {
                 System.err.println("File not exist!!!");
@@ -116,7 +116,7 @@ public class Validate {
 
     //check username exist
     public static boolean checkUsernameExist(String username) {
-        File file = new File("D:/LAB211/J1.S.P0057D/user.dat");
+        File file = new File("D:/LAB211/J1.S.P0057/user.dat");
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);

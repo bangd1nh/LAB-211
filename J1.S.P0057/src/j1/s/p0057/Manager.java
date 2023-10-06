@@ -60,7 +60,7 @@ public class Manager {
 
     //write new account to data
     public static void addAccountData(String username, String password) {
-        File file = new File("D:/LAB211/J1.S.P0057D/user.dat");
+        File file = new File("D:/LAB211/J1.S.P0057/user.dat");
         try {
             FileWriter fileWriter = new FileWriter(file, true);
             fileWriter.write(username + ";" + password + "\n");
@@ -73,7 +73,7 @@ public class Manager {
 
     //get password by username
     public static String passwordByUsername(String username) {
-        File file = new File("D:/LAB211/J1.S.P0057D/user.dat");
+        File file = new File("D:/LAB211/J1.S.P0057/user.dat");
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
