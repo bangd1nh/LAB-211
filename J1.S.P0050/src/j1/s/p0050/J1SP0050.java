@@ -4,8 +4,6 @@
  */
 package j1.s.p0050;
 
-import java.util.List;
-
 /**
  *
  * @author admin
