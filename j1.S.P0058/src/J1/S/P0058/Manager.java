@@ -5,7 +5,6 @@
 package J1.S.P0058;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,22 +13,11 @@ import java.util.Set;
  * @author admin
  */
 public class Manager {
-    public static boolean checkKeywordExist(HashMap<String, String> hm, String english) {
-        Set set = hm.entrySet();
-        Iterator iterator = set.iterator();
-        while (iterator.hasNext()) {
-            Map.Entry mentry = (Map.Entry) iterator.next();
-            if (english.equalsIgnoreCase(mentry.getKey().toString())) {
-                return false;
-            }
-        }
-        return true;
-    }
     
     public static void addWord(HashMap<String, String> hm){
         System.out.print("Enter Enlish: ");
         String english = Validation.checkInputString();
-        if (!checkKeywordExist(hm, english)) {
+        if (hm.containsKey(english)) {
             if (!Validation.checkInputYN()) {
                 return;
             }
@@ -50,14 +38,11 @@ public class Manager {
     public static void translate(HashMap<String, String> hm) {
         System.out.print("Enter english: ");
         String english = Validation.checkInputString();
-        Set<Map.Entry<String, String>> entries = hm.entrySet();
-        for (Map.Entry entry : entries) {
-            if (entry.getKey().equals(english)) {
-                System.out.println("Vietnamese: " + entry.getValue());
-                return;
-            }
-        }
-        System.out.println("Not found in data");
+        if (hm.containsKey(english)){
+            String value = hm.get(english);
+            System.out.println("Vietnamese: "+value);
+        }else
+            System.out.println("Not found in data");
     }
     
     public static int menu() {
