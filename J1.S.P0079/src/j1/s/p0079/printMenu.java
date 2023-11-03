@@ -4,8 +4,6 @@
  */
 package j1.s.p0079;
 
-import static j1.s.p0079.Manager.unzipFile;
-import static j1.s.p0079.Manager.zipFile;
 import static j1.s.p0079.Validation.checkIntLimit;
 import java.io.IOException;
 
@@ -14,7 +12,8 @@ import java.io.IOException;
  * @author admin
  */
 public class printMenu {
-    public static void printMain() throws IOException {
+    public void printMain() throws IOException {
+        Manager man = new Manager();
         while (true) {
             System.out.println("1. Compression");
             System.out.println("2. Extraction");
@@ -23,10 +22,10 @@ public class printMenu {
             int choose = checkIntLimit(1, 3);
             switch (choose) {
                 case 1:
-                    zipFile();
+                    man.zipFile();
                     break;
                 case 2:
-                    unzipFile();
+                    man.unzipFile();
                     break;
                 case 3:
                     return;

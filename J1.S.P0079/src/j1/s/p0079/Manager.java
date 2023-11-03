@@ -21,7 +21,7 @@ import java.util.zip.ZipOutputStream;
  */
 public class Manager {
 
-    public static void zipFile() throws IOException {
+    public void zipFile() throws IOException {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter Source Folder: ");
         String pathSrc = checkString();
@@ -38,7 +38,7 @@ public class Manager {
         }
     }
 
-    public static boolean compressTo(String pathSrc, String fileZipName,
+    public boolean compressTo(String pathSrc, String fileZipName,
             String pathCompress) throws FileNotFoundException, IOException {
         String sourceFile = pathSrc;
         String nameFos = pathCompress + "/" + fileZipName + ".zip";
@@ -59,7 +59,7 @@ public class Manager {
         return true;
     }
 
-    public static void unzipFile() throws IOException {
+    public void unzipFile() throws IOException {
         System.out.print("Enter Source file: ");
         String pathZipFile = checkString();
         System.out.print("Enter Destination Folder: ");
@@ -72,7 +72,7 @@ public class Manager {
         }
     }
 
-    public static boolean extractTo(String pathZipFile, String pathExtract) throws FileNotFoundException, IOException {
+    public boolean extractTo(String pathZipFile, String pathExtract) throws FileNotFoundException, IOException {
         String fileZip = pathZipFile;
         byte[] buffer = new byte[1024];
         ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));

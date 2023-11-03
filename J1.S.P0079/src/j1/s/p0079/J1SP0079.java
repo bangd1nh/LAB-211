@@ -4,7 +4,6 @@
  */
 package j1.s.p0079;
 
-import static j1.s.p0079.printMenu.printMain;
 import java.io.IOException;
 
 /**
@@ -17,7 +16,8 @@ public class J1SP0079 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        printMain();
+        printMenu menu = new printMenu();
+        menu.printMain();
     }
     
 }
